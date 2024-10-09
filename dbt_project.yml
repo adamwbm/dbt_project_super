@@ -1,0 +1,29 @@
+name: 'dbt_project'
+version: '1.0.0'
+
+profile: 'dbt_project'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets: 
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_project:
+      mart: 
+        +materialized: table
+      reporting: 
+        +materialized: table
+      staging:
+        +materialized: view
+
+seeds:
+  dbt_project:
+    +quote_columns: true
+    +file_format: csv
