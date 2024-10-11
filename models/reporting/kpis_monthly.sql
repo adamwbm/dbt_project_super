@@ -1,7 +1,7 @@
 with 
 
-order_line_items as (
-	select * from {{ ref('fct_order_line_item_enriched') }}
+orders as (
+	select * from {{ ref('fct_orders_enriched') }}
 )
 
 ,orders_month as (
@@ -10,12 +10,12 @@ order_line_items as (
 		customer_id,
 		order_year,
 		order_month,
-		sum(quantity) as basket_size,
-		max(total_order_price) as total_order_price
-	from order_line_items
+		basket_size,
+		total_order_price
+	from orders
 	where refunded_at is null
-	group by 1,2,3,4
 )
+
 
 ,final as (
 	select 

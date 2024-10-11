@@ -32,8 +32,6 @@ order_line_items as (
         c.gender as customer_gender,
         c.state as customer_state,
         c.country as customer_country,
-        c.created_at as customer_created_dt,
-        oli.total_price as total_order_price_by_product,
         o.total_price as total_order_price,
         p.price as unit_price,
         p.cost as unit_cost,
