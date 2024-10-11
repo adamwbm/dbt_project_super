@@ -19,7 +19,7 @@ models:
       mart: 
         +materialized: table
       reporting: 
-        +materialized: table
+        +materialized: view
       staging:
         +materialized: view
 
